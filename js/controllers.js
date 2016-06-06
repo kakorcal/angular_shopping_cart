@@ -1,18 +1,27 @@
 app.controller('searchController', searchController);
 
-searchController.$inject = ['teaService'];
+searchController.$inject = ['$scope', 'teaService'];
 
-function searchController(teaService){
-  this.categories = teaService.getCategories();
-  this.category = null;
-  this.text = '';
+function searchController($scope, teaService){
+  let vm = this;
+  vm.categories = teaService.getCategories();
+  vm.category = null;
+  vm.text = '';
+  vm.bagCount = 'Empty!';
 
-  this.searchedCategory = function(){
-    teaService.searchedCategory(this.category);
+  vm.searchedCategory = function(){
+    teaService.searchedCategory(vm.category);
   };
-  this.searchedText = function(){
-    teaService.searchedText(this.text);
-  }
+
+  vm.searchedText = function(){
+    teaService.searchedText(vm.text);
+  };
+
+  $scope.$watch(function(){
+    return teaService.bagCount;
+  }, function(){
+    vm.bagCount = teaService.bagCount;
+  });
 }
 
 app.controller('itemsController', itemsController);
@@ -39,9 +48,9 @@ app.controller('singleItemController', singleItemController);
 singleItemController.$inject = ['teaService'];
 
 function singleItemController(teaService){
-  this.quantity = 1;
+  this.quantity = '1';
 
   this.addToBag = function(id){
-    teaService.addItem(id, this.quantity);
+    teaService.addItem(id, +this.quantity);
   };
 }

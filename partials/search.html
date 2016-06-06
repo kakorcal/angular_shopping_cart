@@ -13,7 +13,9 @@
       <input type="text" id='search-name' class='form-control' ng-model='search.text' ng-change='search.searchedText()'>
     </div>
     <div class="form-group checkout-button">
-      <button class='btn btn-danger'>Checkout | Bag: Empty!</button>
+      <a href="/checkout">
+        <button class='btn btn-danger'>Checkout | Bag: {{search.bagCount}}</button>
+      </a>
     </div>
   </form>
 </div>

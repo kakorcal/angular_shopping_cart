@@ -14,6 +14,7 @@ app.service('teaService', function(){
     selectedCategory: null,
     searchText: '',
     selectedItems: {},
+    bagCount: 'Empty!',
     getItems(){
       return items;
     },
@@ -27,11 +28,8 @@ app.service('teaService', function(){
       this.searchText = text;
     },
     addItem(id, quantity){
-      if(this.selectedItems[id]){
-        this.selectedItems[id] += this.selectedItems[id] + quantity;
-      }else{
-        this.selectedItems[id] = quantity;
-      }
+      this.selectedItems[id] = quantity;
+      this.bagCount = Object.keys(this.selectedItems).length;
     }
   };
 });
