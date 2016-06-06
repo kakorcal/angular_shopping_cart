@@ -1,0 +1,84 @@
+img {
+  width: 100%;
+}
+
+.header-message h3{
+  background-color: #fd644d;
+  color: #fff;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.header-title {
+  color: #fd644d;
+}
+
+.checkout-form {
+  position: relative;
+}
+
+.checkout-button {
+  position: absolute;
+  right: 0;
+}
+
+#search-categories, 
+#search-price,
+#quantity {
+  height: 34px;
+  padding: 6px 30px 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#search-price {
+  font-weight: normal;
+}
+
+.fa-sort {
+  position: relative;
+  right: 24px;
+  pointer-events: none;
+}
+
+.teas {
+  margin-top: 20px;
+}
+
+.table>thead>tr>th {
+  vertical-align: middle;
+}
+
+.table-price-container, 
+.item-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} 
+
+.table-bordered>thead>tr>th.table-price-container {
+  border: 1px;
+  border-bottom: 1px solid #ddd;
+}
+
+.item-header-container h2 {
+  margin: 0;
+}
+
+.item-meta {
+  margin-top: 10px;
+}
+
+.item-category {
+  display: inline-block;
+}
+
+.item-category-container,
+.item-ingredients {
+  position: relative;
+  left: -40px;
+}

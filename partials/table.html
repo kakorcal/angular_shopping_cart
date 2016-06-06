@@ -1,0 +1,24 @@
+<div class="container teas">
+  <table class='table table-striped table-bordered'>
+    <thead>
+      <tr>
+        <th>Tea</th>
+        <th class='table-price-container'>
+          <span>Information</span>
+          <span>
+            <label for="search-price">Sort by Price: </label>
+            <select id="search-price">
+              <option selected disabled>-- Price --</option>
+              <option value="highest">Highest</option>
+              <option value="lowest">Lowest</option>
+            </select>
+            <i class='fa fa-sort'></i>
+          </span>      
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr tea-item ng-repeat='item in items.list' item='item'></tr>
+    </tbody>
+  </table>
+</div>
