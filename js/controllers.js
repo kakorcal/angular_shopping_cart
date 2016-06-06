@@ -1,3 +1,11 @@
+app.controller('searchController', searchController);
+
+searchController.$inject = ['teaService'];
+
+function searchController(teaService){
+  this.categories = teaService.getCategories();
+}
+
 app.controller('itemsController', itemsController);
 
 itemsController.$inject = ['teaService'];

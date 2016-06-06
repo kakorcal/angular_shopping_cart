@@ -10,7 +10,9 @@ app.directive('teaSearch', function(){
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: './partials/search.html'
+    templateUrl: './partials/search.html',
+    controllerAs: 'search',
+    controller: searchController
   };  
 });
 

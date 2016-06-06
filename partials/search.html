@@ -3,10 +3,8 @@
     <div class="form-group">
       <label for="search-categories">Search by Categories:</label>
       <select id='search-categories'>
-        <option selected disabled>-- Category --</option>
-        <option>Mustard</option>
-        <option>Ketchup</option>
-        <option>Relish</option>
+        <option selected disabled></option>
+        <option ng-repeat='category in search.categories' value='category'>{{category}}</option>
       </select>
       <i class='fa fa-sort'></i>
     </div>
