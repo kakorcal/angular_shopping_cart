@@ -7,21 +7,14 @@
     <div>
       <span>
         <label for="quantity">Quantity: </label>
-        <select id="quantity">
-          <option selected value='1'></option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+        <select id="quantity" ng-model='tea.quantity'>
+          <option selected value="1"></option>
+          <option ng-repeat='quantity in [2,3,4,5,6,7,8,9]'>{{quantity}}</option>
         </select>
         <i class='fa fa-sort'></i>
       </span>
       <span>
-        <button class='btn btn-warning'>Add To Bag</button>
+        <button class='btn btn-warning' ng-click='tea.addToBag(tea.item._id)'>Add To Bag</button>
       </span>
     </div>
   </div>
@@ -33,20 +26,20 @@
     </div>
     <div class="item-meta">
       <div class='row'>
-        <div class="col-md-2">
+        <div class="col-xs-2">
           <h4>Categories:</h4>
         </div>
-        <div class="col-md-10 item-category-container">
+        <div class="col-xs-10 item-category-container">
           <h4 class='item-category' ng-repeat='category in tea.item.categories'>
              {{category}}{{$last ? '' : ',&nbsp;'}} 
           </h4>
         </div>
       </div>
       <div class='row'>
-        <div class="col-md-2">
+        <div class="col-xs-2">
           <h4>Ingredients:</h4>
         </div>
-        <div class="col-md-10 item-ingredients">
+        <div class="col-xs-10 item-ingredients">
           <h4>{{tea.item.ingredients}}</h4>
         </div>
       </div>

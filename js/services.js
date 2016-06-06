@@ -9,13 +9,29 @@ app.service('teaService', function(){
     }
     return acc;
   }, [[],{}])[0];
-
+  
   return {
+    selectedCategory: null,
+    searchText: '',
+    selectedItems: {},
     getItems(){
       return items;
     },
     getCategories(){
       return categories;
+    },
+    searchedCategory(category){
+      this.selectedCategory = category;
+    },
+    searchedText(text){
+      this.searchText = text;
+    },
+    addItem(id, quantity){
+      if(this.selectedItems[id]){
+        this.selectedItems[id] += this.selectedItems[id] + quantity;
+      }else{
+        this.selectedItems[id] = quantity;
+      }
     }
   };
 });

@@ -49,6 +49,14 @@ img {
   margin-top: 20px;
 }
 
+.table-fixed td:nth-child(1){
+  width: 25%;
+}
+
+.table-fixed td:nth-child(2){
+  width: 75%;
+}
+
 .table>thead>tr>th {
   vertical-align: middle;
 }
@@ -73,12 +81,10 @@ img {
   margin-top: 10px;
 }
 
-.item-category {
-  display: inline-block;
+.item-meta .col-xs-2 {
+  width: 11.666667%;
 }
 
-.item-category-container,
-.item-ingredients {
-  position: relative;
-  left: -40px;
+.item-category {
+  display: inline-block;
 }

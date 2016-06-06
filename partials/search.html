@@ -1,16 +1,16 @@
 <div class="container">
   <form class='form-inline checkout-form'>
     <div class="form-group">
-      <label for="search-categories">Search by Categories:</label>
-      <select id='search-categories'>
-        <option selected disabled></option>
-        <option ng-repeat='category in search.categories' value='category'>{{category}}</option>
+      <label for="search-categories">Search by Category:</label>
+      <select id='search-categories' ng-model='search.category' ng-change='search.searchedCategory()'>
+        <option selected></option>
+        <option ng-repeat='category in search.categories' value='{{category}}'>{{category}}</option>
       </select>
       <i class='fa fa-sort'></i>
     </div>
     <div class="form-group">
       <label for="search-name">Search by Name:</label>
-      <input type="text" id='search-name' class='form-control'>
+      <input type="text" id='search-name' class='form-control' ng-model='search.text' ng-change='search.searchedText()'>
     </div>
     <div class="form-group checkout-button">
       <button class='btn btn-danger'>Checkout | Bag: Empty!</button>

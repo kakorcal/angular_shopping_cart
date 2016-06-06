@@ -16,7 +16,7 @@ app.directive('teaSearch', function(){
   };  
 });
 
-app.directive('teaTable', function(){
+app.directive('teaTable', function(teaService){
   return {
     restrict: 'E',
     scope: {},
