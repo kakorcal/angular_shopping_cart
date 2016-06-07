@@ -1,14 +1,16 @@
 app.service('teaService', function(){
   const items = seed();
-  const categories = items.reduce((acc, cur)=>{
-    return acc.concat(cur.categories);
-  },[]).reduce((acc, cur)=>{
-    if(!acc[1][cur]){
-      acc[1][cur] = cur;
-      acc[0].push(cur);
-    }
-    return acc;
-  }, [[],{}])[0];
+  const categories = items
+    .reduce((acc, cur)=>{
+      return acc.concat(cur.categories);
+    },[])
+    .reduce((acc, cur)=>{
+      if(!acc[1][cur]){
+        acc[1][cur] = cur;
+        acc[0].push(cur);
+      }
+      return acc;
+    }, [[],{}])[0];
   
   return {
     selectedCategory: null,
