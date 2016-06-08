@@ -1,68 +1,77 @@
-app.controller('parentController', parentController);
+//***************************************************************************
+  // home page
+//***************************************************************************
 
+app.controller('parentController', parentController);
 parentController.$inject = ['teaService'];
 
 function parentController(teaService){
-  this.selectedCategory = null;
+  this.selectedCategory = '';
   this.searchText = '';
-  this.selectedItems = [];
   this.bagCount = 'Empty!'; 
+
+  // vm.addToBag = function(item, quantity){
+  //   debugger;
+  //   vm.bagCount = teaService.addItemToCart(item, +quantity);
+  // };
 }
 
 app.controller('searchController', searchController);
-
 searchController.$inject = ['teaService'];
 
 function searchController(teaService){
-  let vm = this;
-  vm.categories = teaService.getCategories();
-  vm.category = null;
-  vm.text = '';
-  vm.bagCount = 'Empty!';
-
-  vm.searchedCategory = function(){
-    teaService.searchedCategory(vm.category);
-  };
-
-  vm.searchedText = function(){
-    teaService.searchedText(vm.text);
-  };
-
-  // $scope.$watch(function(){
-  //   return teaService.bagCount;
-  // }, function(){
-  //   vm.bagCount = teaService.bagCount;
-  // });
+  this.categories = teaService.getCategories();
 }
 
 app.controller('itemsController', itemsController);
-
 itemsController.$inject = ['teaService'];
 
 function itemsController(teaService){
-  let vm = this;
-  vm.list = teaService.getItems();
-  vm.category = teaService.selectedCategory;
-  vm.searchText = teaService.searchText;
-  vm.sortByPrice = null;
-
-  // $scope.$watchCollection(function(){
-  //   return [teaService.selectedCategory, teaService.searchText];
-  // }, function(){
-  //   vm.category = teaService.selectedCategory;
-  //   vm.searchText = teaService.searchText;
-  // });
+  this.list = teaService.getItems();
+  this.sortByPrice = '';
 }
 
 app.controller('singleItemController', singleItemController);
-
 singleItemController.$inject = ['teaService'];
 
 function singleItemController(teaService){
   let vm = this;
-  this.quantity = '1';
+  vm.quantity = '1';
 
-  this.addToBag = function(id){
-    teaService.addItem(id, +this.quantity);
+  vm.addToBag = function(item){
+    teaService.addItemToCart(item, +vm.quantity);
   };
+} 
+
+//***************************************************************************
+  // checkout page
+//***************************************************************************
+
+app.controller('checkoutController', checkoutController);
+checkoutController.$inject = ['teaService'];
+
+function checkoutController(teaService){
+  this.selectedItems = teaService.getSelectedItems();
+  this.price = teaService.calculateTotal();
+}
+
+app.controller('orderTotalController', orderTotalController);
+orderTotalController.$inject = ['teaService'];
+
+function orderTotalController(teaService){
+
+}
+
+app.controller('orderTableController', orderTableController);
+orderTableController.$inject = ['teaService'];
+
+function orderTableController(teaService){
+
+}
+
+app.controller('singleOrderController', singleOrderController);
+singleOrderController.$inject = ['teaService'];
+
+function singleOrderController(teaService){
+  
 }

@@ -1,5 +1,6 @@
 app.service('teaService', function(){
   const items = seed();
+  const selectedItems = [];
   const categories = items
     .reduce((acc, cur)=>{
       return acc.concat(cur.categories);
@@ -13,25 +14,34 @@ app.service('teaService', function(){
     }, [[],{}])[0];
   
   return {
-    selectedCategory: null,
-    searchText: '',
-    selectedItems: {},
-    bagCount: 'Empty!',
     getItems(){
       return items;
     },
     getCategories(){
       return categories;
     },
-    searchedCategory(category){
-      this.selectedCategory = category;
+    getSelectedItems(){
+      return selectedItems;
     },
-    searchedText(text){
-      this.searchText = text;
+    calculateTotal(){
+      return selectedItems.reduce((acc, cur)=>{
+        return acc + ( (cur.price / 100) * cur.quantity);
+      }, 0);
     },
-    addItem(id, quantity){
-      this.selectedItems[id] = quantity;
-      this.bagCount = Object.keys(this.selectedItems).length;
+    addItemToCart(item, quantity){
+      let selectedItem = items.find(cur => cur === item);
+      let idx = selectedItems.reduce((acc, cur, idx)=>{
+        if(cur._id === selectedItem._id) acc = idx;
+        return acc;
+      }, -1);
+
+      if(idx !== -1){
+        selectedItems[idx].quantity = quantity;
+      }else{
+        selectedItems.push(Object.assign({quantity}, selectedItem));        
+      }
+
+      return selectedItems.length;
     }
   };
 });

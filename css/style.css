@@ -62,7 +62,8 @@ img {
 }
 
 .table-price-container, 
-.item-header-container {
+.item-header-container,
+.order-total {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -87,4 +88,26 @@ img {
 
 .item-category {
   display: inline-block;
+}
+
+.order-cell {
+  width: 65%;
+}
+
+.order-meta {
+  text-align: left;
+  display: flex;
+}
+
+.order-meta>div:nth-child(1){
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.order-meta>div:nth-child(2) {
+  margin-left: 10px;
+}
+
+.order-meta>div:nth-child(2) h4 {
+  line-height: 2em;
 }

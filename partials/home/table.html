@@ -18,13 +18,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr tea-item 
-          ng-repeat='
-            item in items.list |
-            filter: items.searchText ? items.searchText: "" | 
-            filter: items.category ? items.category : "" | 
-            orderBy: items.sortByPrice ? items.sortByPrice : ""
-          'item='item'
+      <!-- Disable wordwrap if you breaklines inside the ng-repeat  -->
+      <tr tea-item
+          ng-repeat='item in items.list          |
+            filter:  items.data.searchText       | 
+            filter:  items.data.selectedCategory | 
+            orderBy: items.sortByPrice'
+          item='item'
       ></tr>
     </tbody>
   </table>

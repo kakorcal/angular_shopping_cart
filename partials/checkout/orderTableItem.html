@@ -1,0 +1,25 @@
+<td class='order-cell'>
+  <div class='order-meta'>
+    <div>
+      <img src="{{item.order.imageUrl}}" alt="tea">
+    </div>
+    <div>
+      <h3>{{item.order.name}}</h3>
+      <div class='item-meta'>
+        <em>Caffeine Scale:</em> <strong>{{item.order.caffeineScale}} |</strong>
+        <em>Rating:</em> <strong>{{item.order.rating}}</strong>
+      </div>
+      <h4>Ingredients: {{item.order.ingredients}}</h4>
+    </div>
+  </div>
+</td>
+<td>
+  <h4>{{item.order.quantity}}</h4>
+</td>
+<td>
+  <h4>{{(item.order.price * item.order.quantity) / 100 | currency}}</h4>
+</td>
+<td>
+  <button class="btn btn-warning">Edit</button>
+  <button class="btn btn-danger">Delete</button>
+</td>
