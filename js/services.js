@@ -49,7 +49,7 @@ app.service('teaService', function(){
         return acc;
       }, -1);
 
-      return selectedItems.splice(idx, 1);
+      selectedItems.splice(idx, 1);
     },
     addItemToCart(item, quantity){
       let selectedItem = items.find(cur => cur === item);
