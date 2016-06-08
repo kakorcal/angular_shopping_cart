@@ -9,7 +9,34 @@
       </tr>
     </thead>
     <tbody>
-      <tr order-item ng-repeat='order in items.total.selectedItems' order='order' class='text-center'></tr>
+      <tr ng-repeat='item in items.total.selectedItems' class='text-center'>
+        <td class='order-cell-product'>
+          <div class='order-meta'>
+            <div>
+              <img src="{{item.imageUrl}}" alt="tea">
+            </div>
+            <div>
+              <h3>{{item.name}}</h3>
+              <div class='item-meta'>
+                <em>Caffeine Scale:</em> <strong>{{item.caffeineScale}} |</strong>
+                <em>Rating:</em> <strong>{{item.rating}}</strong>
+              </div>
+              <h4>Ingredients: {{item.ingredients}}</h4>
+            </div>
+          </div>
+        </td>
+        <td class='order-cell-quantity'>
+          <h4 ng-hide='item.edit'>{{item.quantity}}</h4>
+          <input ng-show='item.edit' ng-model='item.qty' type="number" max='10' min='1' class='form-control' />
+        </td>
+        <td>
+          <h4>{{(item.price * item.quantity) / 100 | currency}}</h4>
+        </td>
+        <td>
+          <button class="btn btn-warning" ng-click='items.total.onEdit(item, item.qty)'>{{!item.edit ? 'Edit' : 'Save'}}</button>
+          <button class="btn btn-danger" ng-click='items.total.onDelete(item)'>Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

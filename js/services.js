@@ -28,6 +28,29 @@ app.service('teaService', function(){
         return acc + ( (cur.price / 100) * cur.quantity);
       }, 0);
     },
+    onEditOrder(item, quantity){
+      let order = selectedItems.find(cur => cur === item);
+      let idx = selectedItems.reduce((acc, cur, idx)=>{
+        if(cur._id === order._id) acc = idx;
+        return acc;
+      }, -1);
+      
+      if(quantity) selectedItems[idx].quantity = quantity;
+
+      if(order.edit){
+        selectedItems[idx].edit = false;
+      }else{
+        selectedItems[idx].edit = true;
+      }
+    },
+    onDeleteOrder(item){
+      let idx = selectedItems.reduce((acc, cur, idx)=>{
+        if(cur._id === item._id) acc = idx;
+        return acc;
+      }, -1);
+
+      return selectedItems.splice(idx, 1);
+    },
     addItemToCart(item, quantity){
       let selectedItem = items.find(cur => cur === item);
       let idx = selectedItems.reduce((acc, cur, idx)=>{
@@ -38,7 +61,7 @@ app.service('teaService', function(){
       if(idx !== -1){
         selectedItems[idx].quantity = quantity;
       }else{
-        selectedItems.push(Object.assign({quantity}, selectedItem));        
+        selectedItems.push(Object.assign({quantity, edit: false}, selectedItem));        
       }
 
       return selectedItems.length;

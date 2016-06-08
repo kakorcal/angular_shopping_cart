@@ -90,8 +90,12 @@ img {
   display: inline-block;
 }
 
-.order-cell {
+.order-cell-product {
   width: 65%;
+}
+
+.order-cell-quantity {
+  width: 7%;
 }
 
 .order-meta {

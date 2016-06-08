@@ -19,13 +19,58 @@
     </thead>
     <tbody>
       <!-- Disable wordwrap if you breaklines inside the ng-repeat  -->
-      <tr tea-item
-          ng-repeat='item in items.list          |
+      <tr ng-repeat='item in items.list          |
             filter:  items.data.searchText       | 
             filter:  items.data.selectedCategory | 
-            orderBy: items.sortByPrice'
-          item='item'
-      ></tr>
+            orderBy: items.sortByPrice'>
+        <td>
+          <img src="{{item.imageUrl}}" alt="tea">
+        </td>
+        <td>
+          <div class='item-header-container'>
+            <h2>{{item.name}} <small>- {{item.price / 100 | currency}}</small></h2>
+            <div>
+              <span>
+                <label for="quantity">Quantity: </label>
+                <select id="quantity" ng-model='item.quantity'>
+                  <option ng-repeat='qty in [2,3,4,5,6,7,8,9,10]'>{{qty}}</option>
+                </select>
+                <i class='fa fa-sort'></i>
+              </span>
+              <span>
+                <button class='btn btn-warning' ng-click='items.data.addToBag(item, item.quantity)'>Add To Bag</button>
+              </span>
+            </div>
+          </div>
+          <div class='item-body-container'>
+            <div class='item-meta'>
+              <em>Caffeine Scale:</em> <strong>{{item.caffeineScale}} |</strong>
+              <em>Rating:</em> <strong>{{item.rating}} |</strong>
+              <em>In Stock?</em> <strong>{{item.inStock ? 'Yes' : 'No'}}</strong>
+            </div>
+            <div class="item-meta">
+              <div class='row'>
+                <div class="col-xs-2">
+                  <h4>Categories:</h4>
+                </div>
+                <div class="col-xs-10 item-category-container">
+                  <h4 class='item-category' ng-repeat='category in item.categories'>
+                     {{category}}{{$last ? '' : ',&nbsp;'}} 
+                  </h4>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-xs-2">
+                  <h4>Ingredients:</h4>
+                </div>
+                <div class="col-xs-10 item-ingredients">
+                  <h4>{{item.ingredients}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

@@ -44,20 +44,20 @@ app.directive('teaTable', function(){
   };  
 });
 
-app.directive('teaItem', function(){
-  return {
-    restrict: 'A',
-    scope: {},
-    bindToController: { item: '=' },
-    templateUrl: './partials/home/item.html',
-    controllerAs: 'tea',
-    controller: singleItemController,
-    // require: '^teaParent',
-    // link: function(scope, element, attrs, teaParentCtrl){
+// app.directive('teaItem', function(){
+//   return {
+//     restrict: 'A',
+//     scope: {},
+//     bindToController: { item: '=' },
+//     templateUrl: './partials/home/item.html',
+//     controllerAs: 'tea',
+//     controller: singleItemController,
+//     // require: '^teaParent',
+//     // link: function(scope, element, attrs, teaParentCtrl){
 
-    // }
-  }
-});
+//     // }
+//   }
+// });
 
 //***************************************************************************
   // checkout page
@@ -95,13 +95,13 @@ app.directive('teaOrderTable', function(){
   }
 });
 
-app.directive('orderItem', function(){
-  return {
-    restrict: 'A',
-    scope: {},
-    bindToController: { order: '=' },
-    templateUrl: './partials/checkout/orderTableItem.html',
-    controllerAs: 'item',
-    controller: singleOrderController
-  }
-})
+// app.directive('orderItem', function(){
+//   return {
+//     restrict: 'A',
+//     scope: {},
+//     bindToController: { order: '=' },
+//     templateUrl: './partials/checkout/orderTableItem.html',
+//     controllerAs: 'item',
+//     controller: singleOrderController
+//   }
+// });
